@@ -28,10 +28,6 @@ $SSH_CMD "mysql -u$DB_USER -p$DB_PWD -h$DB_HOST -e 'show tables' -s --skip-colum
 # dump tables structures only for those special ones
 $SSH_CMD "mysql -u$DB_USER -p$DB_PWD -h$DB_HOST -e 'show tables' -s --skip-column-names $DB_NAME | grep $OPTS | xargs mysqldump --no-data -u$DB_USER -p$DB_PWD -h$DB_HOST $DB_NAME" >> $FILE
 
-# demo user and user role
-$SSH_CMD "mysqldump -u$DB_USER -p$DB_PWD -h$DB_HOST $DB_NAME ${TABEL_PREFIX}users_roles" >> $FILE
-$SSH_CMD "mysqldump -u$DB_USER -p$DB_PWD -h$DB_HOST $DB_NAME ${TABEL_PREFIX}users --where=\"uid = 0 or name='admin'\"" >> $FILE
-
 # compass
 bzip2 $FILE
 
