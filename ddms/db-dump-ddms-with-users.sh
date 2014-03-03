@@ -12,12 +12,12 @@ DB_USER='ddms'
 DB_PWD='ddms'
 DB_HOST='192.168.10.85'
 TABEL_PREFIX='martell_'
-FILE=ddms-db-latest.sql
+FILE=ddms-db-latest-with-users.sql
 SSH_CMD="ssh $USER@$HOST"
 
 rm -rf $FILE
 
-SKIP_TABLES=( migrate user stats tracker weibo watchdog cache session )
+SKIP_TABLES=( migrate watchdog cache session )
 
 OPTS=$(printf "\|%s" "${SKIP_TABLES[@]}")
 OPTS="${OPTS:2}"
