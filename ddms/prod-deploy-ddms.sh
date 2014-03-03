@@ -16,7 +16,6 @@ do
 	       	--exclude=sites/default/files \
 	       	--exclude=sites/magazine \
 	       	--exclude=sites/sites.php \
-	       	--exclude=var \
 	       	. $srv:~/sites/ddms/
 done
 
