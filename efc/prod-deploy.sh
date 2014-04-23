@@ -22,4 +22,6 @@ rsync -arvP --delete \
   --exclude=sass \
   --exclude=*.md \
   --exclude=Vagrantfile \
+  --exclude=src/config.php \
+  --exclude=js/platform.js \
   . $PROD_SRV:~/sites/efc/
