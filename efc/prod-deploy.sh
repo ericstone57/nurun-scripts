@@ -15,7 +15,7 @@ rsync -arvP --delete \
   --exclude=*.json \
   --exclude=*.lock \
   --exclude=*.log \
-  --exclude=.git \
+  --exclude=.git* \
   --exclude=*.rb \
   --exclude=.sass-cache \
   --exclude=manifests \
