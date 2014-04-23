@@ -8,6 +8,8 @@ PROD_SRV=192.168.10.37
 
 cd ~/sites/sha-lancome-efforless-chic
 
+compass clean && compass compile -c config-prod.rb
+
 rsync -arvP --delete \
   --exclude=web/upload/* \
   --exclude=*.json \
