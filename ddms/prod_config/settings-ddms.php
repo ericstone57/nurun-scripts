@@ -526,3 +526,36 @@ drupal_fast_404();
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+
+/**
+ * Memcache Storage
+ *
+ * see https://drupal.org/node/2099403
+ */
+# Move all cached data (except form cache) to memcache storage.
+$conf['cache_backends'][] = 'sites/all/modules/memcache_storage/memcache_storage.inc';
+$conf['cache_default_class'] = 'MemcacheStorage';
+$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+$conf['cache_class_cache_update'] = 'DrupalDatabaseCache';
+
+# Advanced usage of Drupal page cache.
+$conf['cache_backends'][] = 'sites/all/modules/memcache_storage/memcache_storage.page_cache.inc';
+$conf['cache_class_cache_page'] = 'MemcacheStoragePageCache';
+
+# Do not connect to the database when serving cached page for anonymous users.
+$conf['page_cache_invoke_hooks'] = FALSE;
+$conf['page_cache_without_database'] = TRUE;
+
+# Open persistent memcached connection.
+$conf['memcache_storage_persistent_connection'] = TRUE;
+
+# Add multiple memcached instances.
+$conf['memcache_servers'] = array(
+  '127.0.0.1:11211' => 'default',
+);
+
+# Set current extension.
+$conf['memcache_extension'] = 'Memcached';
+
+# Move storage for sessions into memcached.
+$conf['session_inc'] = 'sites/all/modules/memcache_storage/includes/session.inc';
