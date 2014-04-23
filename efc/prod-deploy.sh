@@ -17,6 +17,7 @@ rsync -arvP --delete \
   --exclude=*.log \
   --exclude=.git \
   --exclude=*.rb \
+  --exclude=.sass-cache \
   --exclude=manifests \
   --exclude=nurun-site-build \
   --exclude=sass \
